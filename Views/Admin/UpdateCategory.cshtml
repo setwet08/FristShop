@@ -1,0 +1,42 @@
+﻿@model sampleEco.Models.CategoryDetail
+@{
+    ViewBag.Title = "UpdateCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item ">Categories</li>
+        <li class="breadcrumb-item active">Add New Category</li>
+    </ol>
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+          Add New Category Details
+           
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("UpdateCategory", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(m => m.categoryId)
+
+                <div class="form-group">
+                    <label class="control-label">Category Name</label>
+
+                    @Html.TextBoxFor(m => m.categoryName, new { @class = "form-control", placeholder = "Enter category Name", required = "reruired", autofocus = "autofocus" })
+                    @Html.ValidationMessageFor(m => m.categoryName, "", new { @class = "text-danger" })
+                    </div>
+                    <a onclick="window.history.back()" class="btn btn-danger">Cancel</a>
+                    <input type="submit" class="btn btn-primary" value="save" />
+                    }
+                </div>
+        </div>
+    </div>
+
+
+
